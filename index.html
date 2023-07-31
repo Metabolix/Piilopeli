@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piilopeli</title>
+  <style>
+    body {
+      margin: 0;
+      user-select: none;
+      text-align: center; /* NOTICE: Lisätty yksinkertainen keskitys. */
+    }
+    .popup-text {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      padding: 10px 20px;
+      z-index: 9999;
+      min-width: 5em;
+      text-align: center;
+      /* NOTICE: Muutettu seuraavat arvot. */
+      background-color: #000;
+      border-radius: 15px;
+      font-size: 50px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    textarea {
+      display: block;
+      margin: 10px auto;
+    }
+
+    button {
+      display: block;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Piilopeli</h1>
+  <p>Pelissä pieni otus menee piiloon ja se pitää etsiä. Kun otukseen törmää, se menee uudestaan piiloon. Peliä ohjataan klikkaamalla tai koskemalla toivottuun kulkusuuntaan.</p><!-- NOTICE: Lisätty ohje. -->
+  <button id="aloitaPeli">Aloita peli</button>
+  <p>Kartta: <code>#</code> on seinä, <code>v</code> on valo.</p><!-- NOTICE: Lisätty tämä ohje, vaihdettu laatikon kokoa ja piirretty oma kartta. -->
+  <textarea id="kartta" rows="25" cols="60">
+######################
+#.....#............###
+#.....#.#.v........###
+#...###.#........v...#
+#.......#...####.....#
+#..v....#...####.....#
+#.......#...########.#
+#####.#########......#
+#####.#.......#......#
+#........v..#.....v..#
+#.v.........#........#
+#...############.....#
+#...#..........#.###.#
+###.#........v.#...###
+###.#...v.##...##...##
+###.###...#######...##
+#.....#........##.v.##
+#.v...#...##.v......##
+#.........##.....#####
+######################
+</textarea>
+
+  <script type="module">
+    import { init } from './main.js';
+
+    document.getElementById('aloitaPeli').addEventListener('click', () => {
+      const karttaTeksti = document.getElementById('kartta').value;
+      init(karttaTeksti);
+    });
+  </script>
+
+  <h2>Lisenssit</h2><!-- NOTICE: Täydennetty. -->
+  <p>Pelin lisenssi: The Unlicense, peli on julkaistu vapaaseen käyttöön.</p>
+  <p>3D-kirjasto <a href="https://threejs.org/">three.js</a>:n lisenssi: MIT.</p>
+</body>
+</html>
